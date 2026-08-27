@@ -93,10 +93,10 @@ Verifying test: `TestIntegrationWithCatalogUpdate` —
 
 **Duplicated AUTO_PAY_OFF check:** the control tag `AUTO_PAY_OFF` is checked independently in two places
 rather than through a single shared gate:
-- `ProcessorBase.insert_AUTO_PAY_OFF_ifRequired(...)` —
-  `payment/src/main/java/org/killbill/billing/payment/core/ProcessorBase.java:730` (and the related
-  `process_AUTO_PAY_OFF_removal` at line 312).
-- `InvoicePaymentControlPluginApi`'s control-plugin logic —
+- `ProcessorBase.isAccountAutoPayOff(...)` / `ProcessorBase.setAccountAutoPayOff(...)` —
+  `payment/src/main/java/org/killbill/billing/payment/core/ProcessorBase.java:87-99`.
+- `InvoicePaymentControlPluginApi.insert_AUTO_PAY_OFF_ifRequired(...)` (line 730) and
+  `InvoicePaymentControlPluginApi.process_AUTO_PAY_OFF_removal(...)` (line 312) —
   `payment/src/main/java/org/killbill/billing/payment/invoice/InvoicePaymentControlPluginApi.java`.
 
 Verifying test: `TestIntegrationWithAutoPayOff` —

@@ -50,8 +50,10 @@ mechanisms make sense without them:
    under caching.
 2. **Audit / history immutability.** Mutating rows never simply overwrite prior values: an append-only
    `audit_log` table plus per-entity `*_history` tables record every change (see the evidence map's
-   cross-cutting section). Seam 2's invoice repair mechanism is this same principle applied to invoices
-   specifically — a committed invoice is never edited in place.
+   cross-cutting section). Seam 2's invoice repair mechanism is this same principle applied to ordinary
+   billing items on invoices specifically — such an item on a committed invoice is corrected by adding
+   a new `REPAIR_ADJ`/`ITEM_ADJ` item rather than by editing it in place (see
+   [seam-2-invoicing.md](./seam-2-invoicing.md) for the narrower `CBA`-bookkeeping exception).
 3. **Plugin extensibility.** Payment gateways, invoice formatters, currency conversion and usage
    metering are all pluggable behind provider-plugin registries (the evidence map's cross-cutting
    section lists them), so seam-level mechanisms like Seam 4's control plane must express state through
