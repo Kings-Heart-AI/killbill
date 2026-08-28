@@ -41,3 +41,32 @@ Looking for statistics? This project does not use a monolithic repository, but i
 ### About Kill Bill
 
 [Martin Westhead](https://www.linkedin.com/pub/martin-westhead/1/75a/248), [Pierre-Alexandre Meyer](https://www.linkedin.com/in/pierrealexandremeyer), and [Stéphane Brossier](https://www.linkedin.com/in/stephanebrossier) founded the project independently in 2010. The Billing Project, LLC owns the Kill Bill codebase and trademarks. Professional services, sponsorships, and commercial support packages are available [upon request](https://killbill.io/contact-us/).
+
+## Tech Stack
+
+- Java, multi-module Maven project (`killbill-oss-parent`)
+- Guice for dependency injection, JAX-RS (Jersey) for the REST API, Jetty for the embedded server
+- MySQL/relational storage via JDBC
+- Depends on sibling Kill Bill repos (`killbill-api`, `killbill-plugin-api`, `killbill-commons`, `killbill-platform`, `killbill-client-java`)
+
+## Usage
+
+```bash
+# Build all modules, skipping tests
+mvn -DskipTests=true clean install
+
+# Run the test suite
+mvn test
+
+# Start the server locally (profiles/killbill)
+bin/start-server
+```
+
+## Version
+
+| Field | Value |
+|-------|-------|
+| **Current version** | 0.25.5-SNAPSHOT |
+| **Date** | 2026-08-27 |
+
+See [CHANGELOG.md](CHANGELOG.md) for local task-tracking history, or [NEWS](NEWS) for official upstream Kill Bill release notes.

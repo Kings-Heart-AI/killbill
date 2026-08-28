@@ -230,3 +230,7 @@ logs/
 util/sql
 /.codex
 /.idea/copilot.data.migration.ask2agent.xml
+
+# graphify tool output (regenerable, large local cache)
+/graphify-out/
+/.serena/
